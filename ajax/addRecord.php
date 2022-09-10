@@ -1,23 +1,23 @@
 <?php
-if(isset($_POST['TipoDocu']) && isset($_POST['NumeUsua']))
-	{
 
+if(isset($_POST['nombre']))
+	{
+	
 		// include Database connection file 
 		include("db_connection.php");
 
 		// get values 
  
-	$TipoDocu=$_POST['TipoDocu'];
-	$NumeUsua=$_POST['NumeUsua'];
-    $Nombre1=$_POST['Nombre1'];
-    $Nombre2=$_POST['Nombre2'];
-    $Apellido1=$_POST['Apellido1'];
-    $Apellido2=$_POST['Apellido2'];
-    $Genero=$_POST['Genero'];
-    $IdDepa=$_POST['IdDepa'];
-    $IdMuni=$_POST['IdMuni'];
+	$nombre=$_POST['nombre'];
+	$email=$_POST['email'];
+    $sexo=$_POST['sexo'];
+    $area=$_POST['area'];
+    $descripcion=$_POST['descripcion'];
+    $boletin=$_POST['boletin'];
+    $roles=$_POST['roles'];
 
-		$query = "INSERT INTO paciente(TipoDocu, NumeUsua, Nombre1, Nombre2, Apellido1, Apellido2, Genero, IdDepa, IdMuni) VALUES('$TipoDocu', '$NumeUsua', '$Nombre1', '$Nombre2', '$Apellido1', '$Apellido2', '$Genero', '$IdDepa', 'IdMuni' )";
+
+		$query = "INSERT INTO empleado(nombre, email, sexo, area_id, descripcion, boletin) VALUES('$nombre', '$email', '$sexo', '$area', '$descripcion', '$boletin')";
 
 		if (!$result = mysqli_query($con, $query)) {
 	        exit(mysqli_error($con));

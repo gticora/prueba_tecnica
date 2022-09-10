@@ -1,44 +1,40 @@
 // Add Record
 function addRecord() {
-    // get values
-   var TipoDocu = $("#TipoDocu").val();
-    var NumeUsua = $("#NumeUsua").val();
-    var Nombre1 = $("#Nombre1").val();
-    var Nombre2 = $("#Nombre2").val();
-    var Apellido1 = $("#Apellido1").val();
-    var Apellido2 = $("#Apellido2").val();
-    var Genero = $("#Genero").val();
-    var IdDep = $("#IdDepa").val();
-    var IdMuni = $("#IdMuni").val();
 
+    // get values
+    var nombre = $("#nombre").val();
+    var email = $("#email").val();
+    var sexo = $('input:radio[name=sexo]:checked').val();
+    var area = $("#area").val();
+    var descripcion = $("#descripcion").val();
+    var boletin = $("#boletin").val();
+    var roles = $("#roles").val();
+    
     // Add record
     $.post("ajax/addRecord.php", {
-            TipoDocu: TipoDocu,
-            NumeUsua: NumeUsua,
-            Nombre1: Nombre1,
-            Nombre2: Nombre2,
-            Apellido1: Apellido1,
-            Apellido2: Apellido2,
-            Genero: Genero,
-            IdDep: IdDep,
-            IdMuni: IdMuni
+            nombre: nombre,
+            email: email,
+            sexo: sexo,
+            area: area,
+            descripcion: descripcion,
+            boletin: boletin,
+            roles: roles
     }, function (data, status) {
+       console.log(data);
         // close the popup
         $("#add_new_record_modal").modal("hide");
 
         // read records again
-        readRecords();
+       readRecords();
 
-        // clear fields from the popup
-        $("##TipoDocu").val("");
-        $("#NumeUsua").val("");
-        $("Nombre1").val("");
-        $("Nombre2").val("");
-        $("#Apellido1").val("");
-        $("#Apellido2").val("");
-        $("#Genero").val("");
-        $("#IdDepa").val("");
-        $("#IdMuni").val("");
+       // clear fields from the popup
+        $("#nombre").val("");
+        $("#email").val("");
+        $("sexo").val("");
+        $("area").val("");
+        $("#descripcion").val("");
+        $("#boletin").val("");
+        $("#roles").val("");
     });
 }
 
@@ -58,7 +54,7 @@ function DeleteUser(id) {
             },
             function (data, status) {
                 // reload Users by using readRecords();
-                //readRecords();
+                readRecords();
             }
         );
     }
