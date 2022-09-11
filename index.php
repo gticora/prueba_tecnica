@@ -21,7 +21,7 @@ include("clases/formulario.class.php");
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>CRUD SINERGIA</title>
+<title>CRUD</title>
 
 <!-- Bootstrap core CSS -->
 <link href="dist/css/bootstrap.min.css" rel="stylesheet">
@@ -135,7 +135,7 @@ include("clases/formulario.class.php");
         <label class="form-check-label" for="flexCheckDefault"> Roles </label>
         <?php $r=0; while($r<count($valor_roles)):?>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="<?=$valor_roles[$m]['id']?>" id="roles">
+            <input class="form-check-input" type="checkbox" value="<?=$valor_roles[$m]['id']?>" id="rol <?=$valor_roles[$m]['id']?>">
             <label class="form-check-label" for="flexCheckDefault">
               <?=$valor_roles[$r]['nombre']?>
             </label>

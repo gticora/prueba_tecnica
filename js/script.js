@@ -83,6 +83,8 @@ function GetUserDetails(id) {
 
             if(user.boletin=='1')  $("#boletin").prop("checked", true);
             else if(user.boletin=='2') $("#boletin").prop("checked", false);
+
+            $("#rol ").prop("checked", true);
         }
     );
     // Open modal popup
