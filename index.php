@@ -32,7 +32,7 @@ include("clases/formulario.class.php");
 <body>
 <header> 
   <!-- Fixed navbar -->
-  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark"> <a class="navbar-brand" href="index.php">Prototipo de formulario (crear/modificar)</a>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark"> <a class="navbar-brand" href="index.php">CRUD</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav mr-auto">
@@ -50,14 +50,11 @@ include("clases/formulario.class.php");
 <!-- Begin page content -->
 
 <div class="container">
-  <h3 class="mt-5">DEMO</h3>
+  <h3 class="mt-5">Prototipo de formulario (crear/modificar)</h3>
   <hr>
   <div class="row">
     <div class="col-12 col-md-12"> 
       <!-- Contenido -->
-      
-      
-      
 <!-- Content Section --> 
 <!-- crud jquery-->
 <div class="da">
@@ -134,7 +131,8 @@ include("clases/formulario.class.php");
             Deseo recibir boletin informativo
           </label>
         </div>
-
+        <hr>
+        <label class="form-check-label" for="flexCheckDefault"> Roles </label>
         <?php $r=0; while($r<count($valor_roles)):?>
           <div class="form-check">
             <input class="form-check-input" type="checkbox" value="<?=$valor_roles[$m]['id']?>" id="roles">
@@ -143,18 +141,11 @@ include("clases/formulario.class.php");
             </label>
           </div>
         <?php $r++; endwhile; ?>
-       
-        <!-- <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-          <label class="form-check-label" for="flexCheckChecked">
-            Checked checkbox
-          </label>
-        </div> -->
-
-
+  
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
         <button type="button" class="btn btn-primary" onclick="addRecord()">Agregar</button>
+        <input type="hidden" id="hidden_user_id">
       </div>
     </div>
   </div>
@@ -171,11 +162,6 @@ include("clases/formulario.class.php");
 <script type="text/javascript" src="js/script.js"></script> 
 <!-- Fin crud jquery-->
 <scriptsrc="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-
-<script language="javascript">
-
-
-</script>
       <!-- Fin Contenido --> 
     </div>
   </div>
@@ -188,8 +174,6 @@ include("clases/formulario.class.php");
     <p>Gustavo Ticora </p>
     </span> </div>
 </footer>
-
-
 
 <!-- Bootstrap core JavaScript
     ================================================== --> 

@@ -6,10 +6,10 @@ include("db_connection.php");
 if(isset($_POST['id']) && isset($_POST['id']) != "")
 {
     // get User ID
-    $user_id = $_POST['id'];
+    $id = $_POST['id'];
 
     // Get User Details
-    $query = "SELECT * FROM paciente WHERE id = '$id'";
+    $query = "SELECT * FROM empleado WHERE id = '$id'";
     if (!$result = mysqli_query($con, $query)) {
         exit(mysqli_error($con));
     }

@@ -30,8 +30,8 @@ function addRecord() {
        // clear fields from the popup
         $("#nombre").val("");
         $("#email").val("");
-        $("sexo").val("");
-        $("area").val("");
+        $("#sexo").val("");
+        $("#area").val("");
         $("#descripcion").val("");
         $("#boletin").val("");
         $("#roles").val("");
@@ -62,21 +62,31 @@ function DeleteUser(id) {
 
 function GetUserDetails(id) {
     // Add User ID to the hidden field for furture usage
+    
     $("#hidden_user_id").val(id);
     $.post("ajax/readUserDetails.php", {
             id: id
         },
         function (data, status) {
+            console.log(data);
             // PARSE json data
             var user = JSON.parse(data);
             // Assing existing values to the modal popup fields
-            $("#update_idalumno").val(user.idalumno);
-            $("#update_codalumno").val(user.codalumno);
-            $("#update_obs").val(user.obs);
+            $("#nombre").val(user.nombre);
+            $("#email").val(user.email);
+            $("#area").val(user.area_id);
+            $("#boletin").val(user.boletin);
+            //$("#descripcion").val(user.descripcion);
+
+            if(user.sexo=='M') $("#M").attr("checked",true);
+	       	else if(user.sexo=='F') $("#F").attr("checked",true);
+
+            if(user.boletin=='1')  $("#boletin").prop("checked", true);
+            else if(user.boletin=='2') $("#boletin").prop("checked", false);
         }
     );
     // Open modal popup
-    $("#update_user_modal").modal("show");
+    $("#add_new_record_modal").modal("show");
 }
 
 function UpdateUserDetails() {
