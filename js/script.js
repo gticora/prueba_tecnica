@@ -1,3 +1,4 @@
+
 // Add Record
 function addRecord() {
 
@@ -68,7 +69,6 @@ function GetUserDetails(id) {
             id: id
         },
         function (data, status) {
-            console.log(data);
             // PARSE json data
             var user = JSON.parse(data);
             // Assing existing values to the modal popup fields

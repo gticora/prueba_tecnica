@@ -81,38 +81,49 @@ include("clases/formulario.class.php");
     <div class="modal-content">
    
       <div class="modal-header">
-        <h5 class="modal-title">Agregar nuevo registro</h5>
+        <h5 class="modal-title">Crear empleado</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-    
+      <div class="alert alert-primary" role="alert">
+        Los campos con asteriscos (*) son obligatorios
+      </div>
+      <form id='formulario' class="needs-validation" novalidate>
       <div class="modal-body">
         <div class="form-group">
-          <label for="NumeUsua">Nombres completos</label>
-          <input  type="text" id="nombre" value=""  class="form-control"/>
+          <label for="NumeUsua">Nombres completos*</label>
+          <input  type="text" id="nombre" value=""  class="form-control" required/>
+          <div class="invalid-feedback">
+            Por favor, elije un nombre de empleado.
+          </div>
         </div>
         <div class="form-group">
-          <label for="Nombre1">Correo electronico</label>
-          <input type="email" id="email" value=""   class="form-control"/>
+          <label for="Nombre1">Correo electronico*</label>
+          <input type="email" id="email" value=""   class="form-control" required/>
+          <div class="invalid-feedback">
+            Por favor, elije un correo valido
+          </div>
         </div>
-
+        <label class="form-check-label" for="flexCheckDefault"> Sexo* </label>
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="sexo" id="M" value="M">
+          <input class="form-check-input" type="radio" name="sexo" id="M" value="M" required>
           <label class="form-check-label" for="flexRadioDefault1">
             Masculino
           </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="sexo" id="F" value="F">
+          <input class="form-check-input" type="radio" name="sexo" id="F" value="F" required>
           <label class="form-check-label" for="flexRadioDefault2">
             Femenino
           </label>
+          <div class="invalid-feedback">
+            Por favor, elije un sexo
+          </div>
         </div>
-
         <div class="form-group">
-        <label for="area">Area</label>
-        <select name="area" id="area" class="form-control">
+        <label for="area">Area*</label>
+        <select name="area" id="area" class="form-control" required>
           <?php $m=0;
             while($m<count($valor_areas)){
               echo '<option value="'.$valor_areas[$m]['id'].'">'.$valor_areas[$m]['nombre'].'</option>';
@@ -120,10 +131,16 @@ include("clases/formulario.class.php");
             }
           ?>
         </select>
+        <div class="invalid-feedback">
+          Selecciona un estado válido.
+        </div>
         </div>
         <div class="form-group">
-          <label for="Nombre1">Descripción</label>
-          <textarea class="form-control" id="descripcion" rows="3"></textarea>
+          <label for="Nombre1">Descripción*</label>
+          <textarea class="form-control" id="descripcion" rows="3" required></textarea>
+          <div class="invalid-feedback">
+            Por favor, diligenciar una descripcion valida
+          </div>
         </div>
         <div class="form-check">
           <input class="form-check-input" type="checkbox" value="1" id="boletin">
@@ -132,7 +149,7 @@ include("clases/formulario.class.php");
           </label>
         </div>
         <hr>
-        <label class="form-check-label" for="flexCheckDefault"> Roles </label>
+        <label class="form-check-label" for="flexCheckDefault"> Roles* </label>
         <?php $r=0; while($r<count($valor_roles)):?>
           <div class="form-check">
             <input class="form-check-input" type="checkbox" value="<?=$valor_roles[$m]['id']?>" id="rol <?=$valor_roles[$m]['id']?>">
@@ -141,18 +158,42 @@ include("clases/formulario.class.php");
             </label>
           </div>
         <?php $r++; endwhile; ?>
-  
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary" onclick="addRecord()">Agregar</button>
+        <button class="btn btn-primary" type="submit">Enviar formulario</button>
         <input type="hidden" id="hidden_user_id">
       </div>
+      </form>
     </div>
   </div>
 </div>
 <!-- // Modal --> 
 
+<script>
 
+// Ejemplo de JavaScript inicial para deshabilitar el envío de formularios si hay campos no válidos
+(function () {
+'use strict'
+
+// Obtener todos los formularios a los que queremos aplicar estilos de validación de Bootstrap personalizados
+var forms = document.querySelectorAll('.needs-validation')
+
+// Bucle sobre ellos y evitar el envío
+Array.prototype.slice.call(forms)
+  .forEach(function (form) {
+    form.addEventListener('submit', function (event) {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }else{
+        addRecord();
+      }
+
+      form.classList.add('was-validated')
+    }, false)
+  })
+})()
+</script>
 
 <!-- // Modal --> 
 <!-- Jquery JS file --> 

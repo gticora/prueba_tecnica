@@ -7,7 +7,7 @@ $password = ""; // MySQL user password  (if password is not set for your root us
 $database = "prueba_tecnica_dev"; // MySQL Database name
 
 // Connect to MySQL Database
-$con = new mysqli($host, $user, $password, $database, 3308);
+$con = new mysqli($host, $user, $password, $database, 3309);
 
 // Check connection
 if ($con->connect_error) {
