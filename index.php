@@ -161,7 +161,7 @@ include("clases/formulario.class.php");
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
         <button class="btn btn-primary" type="submit">Enviar formulario</button>
-        <input type="hidden" id="hidden_user_id">
+        <input type="text" id="hidden_user_id">
       </div>
       </form>
     </div>

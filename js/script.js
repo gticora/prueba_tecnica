@@ -1,8 +1,8 @@
-
 // Add Record
 function addRecord() {
 
     // get values
+    var id = $("#hidden_user_id").val();
     var nombre = $("#nombre").val();
     var email = $("#email").val();
     var sexo = $('input:radio[name=sexo]:checked').val();
@@ -10,25 +10,26 @@ function addRecord() {
     var descripcion = $("#descripcion").val();
     var boletin = $("#boletin").val();
     var roles = $("#roles").val();
-    
+
     // Add record
     $.post("ajax/addRecord.php", {
-            nombre: nombre,
-            email: email,
-            sexo: sexo,
-            area: area,
-            descripcion: descripcion,
-            boletin: boletin,
-            roles: roles
-    }, function (data, status) {
-       console.log(data);
+        nombre: nombre,
+        email: email,
+        sexo: sexo,
+        area: area,
+        descripcion: descripcion,
+        boletin: boletin,
+        roles: roles,
+        id: id
+    }, function(data, status) {
+        console.log(data);
         // close the popup
         $("#add_new_record_modal").modal("hide");
 
         // read records again
-       readRecords();
+        readRecords();
 
-       // clear fields from the popup
+        // clear fields from the popup
         $("#nombre").val("");
         $("#email").val("");
         $("#sexo").val("");
@@ -41,7 +42,7 @@ function addRecord() {
 
 // READ records
 function readRecords() {
-    $.get("ajax/readRecord.php", {}, function (data, status) {
+    $.get("ajax/readRecord.php", {}, function(data, status) {
         $("#records_content").html(data);
     });
 }
@@ -53,7 +54,7 @@ function DeleteUser(id) {
         $.post("ajax/deleteUser.php", {
                 id: id
             },
-            function (data, status) {
+            function(data, status) {
                 // reload Users by using readRecords();
                 readRecords();
             }
@@ -63,12 +64,12 @@ function DeleteUser(id) {
 
 function GetUserDetails(id) {
     // Add User ID to the hidden field for furture usage
-    
+
     $("#hidden_user_id").val(id);
     $.post("ajax/readUserDetails.php", {
             id: id
         },
-        function (data, status) {
+        function(data, status) {
             // PARSE json data
             var user = JSON.parse(data);
             // Assing existing values to the modal popup fields
@@ -78,11 +79,11 @@ function GetUserDetails(id) {
             $("#boletin").val(user.boletin);
             //$("#descripcion").val(user.descripcion);
 
-            if(user.sexo=='M') $("#M").attr("checked",true);
-	       	else if(user.sexo=='F') $("#F").attr("checked",true);
+            if (user.sexo == 'M') $("#M").attr("checked", true);
+            else if (user.sexo == 'F') $("#F").attr("checked", true);
 
-            if(user.boletin=='1')  $("#boletin").prop("checked", true);
-            else if(user.boletin=='2') $("#boletin").prop("checked", false);
+            if (user.boletin == '1') $("#boletin").prop("checked", true);
+            else if (user.boletin == '2') $("#boletin").prop("checked", false);
 
             $("#rol ").prop("checked", true);
         }
@@ -118,9 +119,9 @@ function UpdateUserDetails() {
             Genero: Genero,
             IdDep: IdDep,
             IdMuni: IdMuni
-        
+
         },
-        function (data, status) {
+        function(data, status) {
             // hide modal popup
             $("#update_user_modal").modal("hide");
             // reload Users by using readRecords();
@@ -129,7 +130,7 @@ function UpdateUserDetails() {
     );
 }
 
-$(document).ready(function () {
+$(document).ready(function() {
     // READ recods on page load
     readRecords(); // calling function
 });
