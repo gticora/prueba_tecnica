@@ -6,28 +6,6 @@ include("./ajax/db_connection.php");
 
 class formulario {
 
-	// public $arreglo_matriz = array(
-	// 	"0" => array(
-	// 		"0" => "1",
-	// 		"1" => "2",
-	// 		"2" => "3"
-	// 	),
-
-	// 	"1" => array(
-	// 		"0" => "4",
-	// 		"1" => "5",
-	// 		"2" => "6"
-	// 	),
-
-	// 	"2" => array(
-	// 		"0" => "9",
-	// 		"1" => "8",
-	// 		"2" => "9"
-	// 	)
-
-	// );
-
-
 	public function listado_area(){
         global $con;
 		$query = "SELECT * FROM areas";

@@ -2,15 +2,9 @@
 
 include("clases/formulario.class.php");
 
-
     $data = new formulario;
     $valor_areas= $data->listado_area();
     $valor_roles= $data->listado_roles();
-    // echo '<pre>';
-    //      print_r($valor_roles );
-            
-    //          echo '</pre>';
-
 
 ?>
 
@@ -161,7 +155,7 @@ include("clases/formulario.class.php");
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
         <button class="btn btn-primary" type="submit">Enviar formulario</button>
-        <input type="text" id="hidden_user_id">
+        <input type="hidden" id="hidden_user_id">
       </div>
       </form>
     </div>

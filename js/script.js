@@ -92,44 +92,6 @@ function GetUserDetails(id) {
     $("#add_new_record_modal").modal("show");
 }
 
-function UpdateUserDetails() {
-    // get values
-    var TipoDocu = $("#TipoDocu").val();
-    var NumeUsua = $("#NumeUsua").val();
-    var Nombre1 = $("#Nombre1").val();
-    var Nombre2 = $("#Nombre2").val();
-    var Apellido1 = $("#Apellido1").val();
-    var Apellido2 = $("#Apellido2").val();
-    var Genero = $("#Genero").val();
-    var IdDep = $("#IdDepa").val();
-    var IdMuni = $("#IdMuni").val();
-
-    // get hidden field value
-    var id = $("#hidden_user_id").val();
-
-    // Update the details by requesting to the server using ajax
-    $.post("ajax/updateUserDetails.php", {
-            id: id,
-            TipoDocu: TipoDocu,
-            NumeUsua: NumeUsua,
-            Nombre1: Nombre1,
-            Nombre2: Nombre2,
-            Apellido1: Apellido1,
-            Apellido2: Apellido2,
-            Genero: Genero,
-            IdDep: IdDep,
-            IdMuni: IdMuni
-
-        },
-        function(data, status) {
-            // hide modal popup
-            $("#update_user_modal").modal("hide");
-            // reload Users by using readRecords();
-            readRecords();
-        }
-    );
-}
-
 $(document).ready(function() {
     // READ recods on page load
     readRecords(); // calling function
